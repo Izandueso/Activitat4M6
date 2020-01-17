@@ -29,15 +29,16 @@ public class Comprobarxml {
 		//Per obtenir els atributs d’un node, useu el mètode getAttributes()
 		//Per obtenir el nom, el tipus i el valor d’un node, cerqueu els mètodes apropiats.
 		
-		
-		
 		NodeList nodos = nodeArrel.getChildNodes();
 		org.w3c.dom.Node n = null;
 		
 		for (int i = 0; i < nodos.getLength(); i++) {
 			n = nodos.item(i);
 			//System.out.println("Elemento: " + i + " " + n.getNodeName());
-			System.out.println(n.getChildNodes());
+			System.out.println("Nom: " + n.getNodeName());
+			System.out.println("Tipus: " + n.getNodeType());
+			System.out.println("Valor del node: " + n.getNodeValue());
+			System.out.println();
 		}
 		
 		
