@@ -24,24 +24,30 @@ public class Comprobarxml {
 
 		//per obtenir el node arrel
 		org.w3c.dom.Element nodeArrel = doc.getDocumentElement();
+		NodeList nl = doc.getDocumentElement().getChildNodes();
 		
-		//Per obtenir els nodes fill d’un node useu el mètode getChildNodes()		
+		for (int i = 0; i < nl.getLength(); i++) {
+			printTags((org.w3c.dom.Node)nl.item(i));
+		}
+		
+		//Per obtenir els nodes fill d’un node useu el mètode getChildNodes()
 		//Per obtenir els atributs d’un node, useu el mètode getAttributes()
 		//Per obtenir el nom, el tipus i el valor d’un node, cerqueu els mètodes apropiats.
 		
-		NodeList nodos = nodeArrel.getChildNodes();
-		org.w3c.dom.Node n = null;
-		
-		for (int i = 0; i < nodos.getLength(); i++) {
-			n = nodos.item(i);
-			//System.out.println("Elemento: " + i + " " + n.getNodeName());
-			System.out.println("Nom: " + n.getNodeName());
-			System.out.println("Tipus: " + n.getNodeType());
-			System.out.println("Valor del node: " + n.getNodeValue());
-			System.out.println();
-		}
 		
 		
+	}
+	
+	public static void printTags(org.w3c.dom.Node node){
+			System.out.println(node.getNodeName() + " " + node.getTextContent());
+			NodeList nl = node.getChildNodes();
+			for (int j = 0; j < nl.getLength(); j++){
+				printTags(nl.item(j));	
+			}
+	}
+	
+	public static void mostraInformacioNode(Node n, String espai){
+		mostraInformacioNode(n, espai + " ");
 	}
 
 }
