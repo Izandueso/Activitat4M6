@@ -24,10 +24,10 @@ public class Comprobarxml {
 
 		//per obtenir el node arrel
 		org.w3c.dom.Element nodeArrel = doc.getDocumentElement();
-		NodeList nl = doc.getDocumentElement().getChildNodes();
+		NodeList nodeList = doc.getDocumentElement().getChildNodes();
 		
-		for (int i = 0; i < nl.getLength(); i++) {
-			printTags((org.w3c.dom.Node)nl.item(i));
+		for (int i = 0; i < nodeList.getLength(); i++) {
+			imprimirDadesXml((org.w3c.dom.Node)nodeList.item(i));
 		}
 		
 		//Per obtenir els nodes fill d’un node useu el mètode getChildNodes()
@@ -38,16 +38,12 @@ public class Comprobarxml {
 		
 	}
 	
-	public static void printTags(org.w3c.dom.Node node){
-			System.out.println(node.getNodeName() + " " + node.getTextContent());
-			NodeList nl = node.getChildNodes();
-			for (int j = 0; j < nl.getLength(); j++){
-				printTags(nl.item(j));	
+	public static void imprimirDadesXml(org.w3c.dom.Node nodos){
+			System.out.println(nodos.getNodeName() + " " + nodos.getTextContent());
+			NodeList nodoListo = nodos.getChildNodes();
+			for (int j = 0; j < nodoListo.getLength(); j++){
+				imprimirDadesXml(nodoListo.item(j));	
 			}
-	}
-	
-	public static void mostraInformacioNode(Node n, String espai){
-		mostraInformacioNode(n, espai + " ");
 	}
 
 }
